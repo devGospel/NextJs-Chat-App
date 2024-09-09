@@ -8,7 +8,7 @@ const Profile = ({name, desc, data, handleEdit, handleDelete}) => {
            {name} Profile </span>
       </h1>
       <p className="desc text-left">
-        test
+        {desc}
       </p>
 
       <div className='mt-10 prompt_layout'>
