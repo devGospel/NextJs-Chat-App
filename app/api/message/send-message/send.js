@@ -1,13 +1,10 @@
 import Message from '../../../models/message';
 import connectToDB from '../../../utils/db';
 
-export default async function handler(req, res) {
-  await connectToDB();
+export const POST = async (request) => {
+  try {
+      await connectToDB()
 
-  if (req.method === 'POST') {
-    const { content, sender, receiver } = req.body;
-
-    try {
       const message = new Message({
         content,
         sender,
@@ -15,13 +12,12 @@ export default async function handler(req, res) {
       });
 
       await message.save();
-      res.status(201).json(message);
+      return new Response(JSON.stringify(message), { status: 200 })
     } catch (error) {
-      res.status(500).json({ error: 'Failed to send message' });
+      return new Response("Failed to send message", { status: 500 })
     }
-  } else {
-    res.status(405).json({ error: 'Method not allowed' });
-  }
+
 }
+
 
 

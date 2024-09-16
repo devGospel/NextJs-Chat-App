@@ -1,13 +1,11 @@
 import Message from '../../../models/message';
-import connectToDB from '../../../utils/db';
+import {connectToDB} from '../../../utils/db';
 
-export default async function handler(req, res) {
-  await connectToDB();
+export const GET = async (request) => {
+  try {
+      await connectToDB()
 
-  if (req.method === 'GET') {
     const { senderId, receiverId } = req.query;
-
-    try {
       const messages = await Message.find({})
       
 /*         $or:sendsend [
@@ -16,11 +14,11 @@ export default async function handler(req, res) {
         ]
       }).sort({ timestamp: 1 }); */
 
-      res.status(200).json(messages);
+      return new Response(JSON.stringify(messages), { status: 200 })
     } catch (error) {
-      res.status(500).json({ error: 'Failed to load messages' });
+      return new Response("Failed to load messages", { status: 500 })
     }
-  } else {
-    res.status(405).json({ error: 'Method not allowed' });
-  }
 }
+
+
+
