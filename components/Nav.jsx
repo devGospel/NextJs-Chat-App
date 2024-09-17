@@ -109,6 +109,11 @@ const Nav = () => {
                 >
                   Create Prompt
                 </Link>
+
+                <Link href='/chats' className='dropdown_link'>
+                  Chats
+                </Link>
+
                 <button
                   type='button'
                   onClick={() => {
