@@ -29,7 +29,7 @@ const Nav = () => {
           height={30}
           className='object-contain'
         />
-        <p className='logo_text'>Promptopia</p>
+        <p className='logo_text'>Chatter</p>
       </Link>
 
       {/* Desktop Navigation */}
@@ -40,7 +40,7 @@ const Nav = () => {
             <Link href='/create-prompt' className='black_btn'>
               Create Post
             </Link>
-            <Link href='#' className='black_btn'>
+            <Link href='/chats' className='black_btn'>
               Chats
             </Link>
 
@@ -48,9 +48,6 @@ const Nav = () => {
               Sign Out
             </button>
          
-          <button href='/chats' type='button' className="outline_btn"> 
-                Chats
-          </button>
 
             <Link href='/profile'>
               <Image
