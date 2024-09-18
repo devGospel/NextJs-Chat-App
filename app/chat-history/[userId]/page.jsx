@@ -1,29 +1,32 @@
 'use client'
 
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter, useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const ChatHistory = () => {
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const userId = searchParams.get("id");
+  const params = useParams();
+  const { userId } = params // Get userId from the URL
   const [chatHistory, setChatHistory] = useState([]);
 
   useEffect(() => {
+    // Ensure userId is available before making the request
     if (userId) {
       // Fetch chat history for this user
       const fetchChatHistory = async () => {
-        const response = await fetch(`/api/chat-history/${userId}/chats`);
+        const response = await fetch(`/api/chats/${userId}`);
         const data = await response.json();
         setChatHistory(data);
-        console.log('Chat: '+ data)
       };
 
       fetchChatHistory();
     }
+  }, [userId]); // Re-run effect when userId becomes available
 
-  }, [userId]);
-
+  if (!userId) {
+    // Render a loading state until the userId is available
+    return <p>Loading...</p>;
+  }
 
   return (
     <div className="container mx-auto p-6">

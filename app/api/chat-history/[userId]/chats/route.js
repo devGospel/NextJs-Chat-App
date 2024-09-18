@@ -1,12 +1,12 @@
-import {connectToDB} from '../../../../../../utils/db'
-import User from '../../../../../../models/user'
+import {connectToDB} from '../../../../../utils/db'
+import User from '../../../../../models/user'
 
 export const GET = async (request, {params}) => {
     try {
         await connectToDB()
        
 
-        const user = await User.findById(params.id)
+        const user = await User.findById(params.userId)
         console.log(user)
 
         if(!user) return new Response('User not found'
