@@ -1,5 +1,5 @@
-import {connectToDB} from '../../../../utils/db'
-import User from '../../../../models/user'
+import {connectToDB} from '../../../../../../utils/db'
+import User from '../../../../../../models/user'
 
 export const GET = async (request, {params}) => {
     try {

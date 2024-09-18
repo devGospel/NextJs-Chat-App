@@ -13,7 +13,7 @@ const ChatHistory = () => {
     if (userId) {
       // Fetch chat history for this user
       const fetchChatHistory = async () => {
-        const response = await fetch(`/api/chat-history/${userId}`);
+        const response = await fetch(`/api/chat-history/${userId}/chats`);
         const data = await response.json();
         setChatHistory(data);
         console.log('Chat: '+ data)
