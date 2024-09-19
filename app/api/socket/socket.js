@@ -1,16 +1,25 @@
 import { Server } from 'socket.io';
 
-export default function handler(req, res) {
+export default function SocketHandler(req, res) {
   if (!res.socket.server.io) {
     const io = new Server(res.socket.server);
-    res.socket.server.io = io;
 
     io.on('connection', (socket) => {
-      socket.on('message', (message) => {
-        // Broadcast the message to all connected clients
-        io.emit('message', message);
+      console.log('Connected to socket:', socket.id);
+
+      // Handle receiving new messages
+      socket.on('newMessage', (message) => {
+        // Emit the message to the receiver
+        socket.broadcast.emit('receiveMessage', message);
+      });
+
+      socket.on('disconnect', () => {
+        console.log('Disconnected:', socket.id);
       });
     });
+
+    res.socket.server.io = io;
   }
+
   res.end();
 }

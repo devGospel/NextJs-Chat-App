@@ -7,7 +7,6 @@ export const GET = async (request, {params}) => {
        
 
         const user = await User.findById(params.userId)
-        console.log(user)
 
         if(!user) return new Response('User not found'
             , {status: 404}
