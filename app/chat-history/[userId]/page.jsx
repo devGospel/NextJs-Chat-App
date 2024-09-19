@@ -2,6 +2,7 @@
 
 import { useRouter, useParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import SendMessage from '../../send-message/page'
 
 const ChatHistory = () => {
   const router = useRouter();
@@ -33,7 +34,7 @@ const ChatHistory = () => {
     <div className="container mx-auto p-6">
       <h1 className="text-3xl font-bold mb-6">Chat History with User {userId}</h1>
       <div className="chat-history-list">
-        <h2>{userId}</h2>
+       <SendMessage/>
       </div>
     </div>
   );
