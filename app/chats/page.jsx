@@ -23,7 +23,7 @@ const Chats = () => {
 
   return (
     <div className="container mx-auto p-6">
-      <h1 className="text-3xl font-bold mb-6">Users List</h1>
+      <h1 className="text-3xl font-bold mb-6">Chat</h1>
       <div className="users-list grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {users.length > 0 ? (
           users.map((user) => (
@@ -35,7 +35,7 @@ const Chats = () => {
             </Link>
           ))
         ) : (
-          <p className="col-span-full text-center text-gray-500">No users available</p>
+          <p className="col-span-full text-center text-gray-500">No chats available</p>
         )}
       </div>
     </div>

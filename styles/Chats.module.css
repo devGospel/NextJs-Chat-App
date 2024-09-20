@@ -1,0 +1,117 @@
+.container {
+  padding: 20px;
+}
+
+.title {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.userList {
+  list-style: none;
+  padding: 0;
+}
+
+.userItem {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.userItem:hover {
+  background-color: #f0f0f0;
+}
+
+.userDetails {
+  display: flex;
+  align-items: center;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.span {
+  font-size: 18px;
+}
+
+
+/* Chat conversation styling */
+/* styles/ChatGPTPage.module.css */
+
+.chatgptPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: #f8f9fa;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.chatWindow {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  overflow-y: auto;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.message {
+  max-width: 60%;
+  padding: 10px 15px;
+  margin: 10px 0;
+  border-radius: 15px;
+  font-size: 14px;
+}
+
+.user {
+  background-color: #dcf8c6;
+  align-self: flex-end;
+  text-align: right;
+}
+
+.ai {
+  background-color: #ebebeb;
+  align-self: flex-start;
+  text-align: left;
+}
+
+.inputArea {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.inputArea input {
+  flex-grow: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+.inputArea button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.inputArea button:hover {
+  background-color: #0056b3;
+}
