@@ -21,7 +21,16 @@ const ChatHistory = () => {
       // Fetch chat history for this user
       const fetchChatHistory = async () => {
         try {
-          const response = await fetch(`/api/chat-history/${userId}/chats`);
+          const response = await fetch(`/api/chat-history/${id}/${userId}`, 
+            {
+              method: 'GET',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(),
+            }
+            
+          );
           
           // Check if the response is OK and not empty
           if (!response.ok) {
@@ -32,6 +41,7 @@ const ChatHistory = () => {
           const data = await response.json();
           if (data) {
             setChatHistory(data); // Directly set parsed JSON data
+            console.log("Chat history")
           } else {
             console.warn("No chat history data found");
           }

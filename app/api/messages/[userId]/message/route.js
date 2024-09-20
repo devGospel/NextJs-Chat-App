@@ -3,7 +3,7 @@ import Message from '../../../../../models/message';
 
 export const POST = async (request) => {
   try {
-    console.log("here")
+
     // Parse the request body to get the message data
     const { senderId, receiverId, text } = await request.json();
 
