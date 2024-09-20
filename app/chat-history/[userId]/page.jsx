@@ -8,11 +8,12 @@ import styles from '../../../styles/Chats.module.css';
 const ChatHistory = () => {
   const router = useRouter();
   const params = useParams();
+  const {data: session} = useSession()
   const { userId } = params; // Get userId from the URL
   const [chatHistory, setChatHistory] = useState([]);
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
-  const id = '66e95829088edfead5e2c5f2'; // Receiver ID (can be dynamic)
+  const id = session?.user?.id; // Receiver ID (can be dynamic)
 
   useEffect(() => {
     // Ensure userId is available before making the request
@@ -51,8 +52,8 @@ const ChatHistory = () => {
   const handleSendMessage = async () => {
     if (input.trim()) {
       const newMessage = {
-        senderId: userId,
-        receiverId: id,
+        senderId: id,
+        receiverId: userId,
         text: input,
       };
 
