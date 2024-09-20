@@ -5,11 +5,16 @@ import { useSession } from 'next-auth/react';
 import { useParams } from 'next/navigation';
 import styles from '../../styles/Chats.module.css'; // Import the CSS module
 
+
+
+
  const ChatGPTPage = () => {
- 
+  const {data: session} = useSession()
+  const params = useParams()
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
-
+  const userId = session?.user._id
+  const receiverId = params
 
 
   // Fetch messages for the particular user
@@ -39,13 +44,12 @@ import styles from '../../styles/Chats.module.css'; // Import the CSS module
       setMessages([...messages, { ...newMessage, sender: 'user' }]);
       setInput('');
 
-      const res = await fetch(`/api/messages/${id}/message`, {
+      const res = await fetch(`/api/messages/${userId}/message`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(newMessage),
-        
       });
 
       if (!res.ok) {

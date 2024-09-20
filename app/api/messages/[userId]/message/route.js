@@ -3,12 +3,11 @@ import Message from '../../../../../models/message';
 
 export const POST = async (request) => {
   try {
-    console.log("here")
     // Parse the request body to get the message data
-    const { senderId, receiverId, text } = await request.json();
+    const { sender, receiver, content } = await request.json();
 
     // Validate required fields
-    if (!senderId || !receiverId || !text) {
+    if (!sender || !receiver || !content) {
       return new Response(JSON.stringify({ success: false, error: 'All fields are required' }), { status: 400 });
     }
 
@@ -17,9 +16,9 @@ export const POST = async (request) => {
 
     // Create a new message
     const newMessage = new Message({
-      sender: senderId,
-      receiver: receiverId,
-      content: text,
+      sender,
+      receiver,
+      content,
       timestamp: Date.now(),
     });
 
