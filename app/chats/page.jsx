@@ -15,10 +15,12 @@ const Chats = () => {
       const data = await response.json();
       
       setUsers(data);
+      console.log("User: " +users.length)
     };
 
     fetchUsers();
   }, []);
+
 
 
   return (

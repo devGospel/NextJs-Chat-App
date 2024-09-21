@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import styles from '../../../styles/Chats.module.css';
 
+
 const ChatHistory = () => {
   const router = useRouter();
   const params = useParams();
@@ -13,51 +14,27 @@ const ChatHistory = () => {
   const [chatHistory, setChatHistory] = useState([]);
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
-  const id = session?.user?.id; // Receiver ID (can be dynamic)
+  const id = session?.user?.id
+
 
   useEffect(() => {
     // Ensure userId is available before making the request
     if (userId) {
       // Fetch chat history for this user
       const fetchChatHistory = async () => {
-        try {
-          const response = await fetch(`/api/chat-history/${id}/${userId}`, 
-            {
-              method: 'GET',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify(),
-            }
-            
-          );
-          
-          // Check if the response is OK and not empty
-          if (!response.ok) {
-            console.error("Failed to fetch chat history");
-            return;
-          }
-
-          const data = await response.json();
-          if (data) {
-            setChatHistory(data); // Directly set parsed JSON data
-            console.log("Chat history")
-          } else {
-            console.warn("No chat history data found");
-          }
-        } catch (error) {
-          console.error("Error fetching chat history:", error);
-        }
+        const response = await fetch(`/api/chat-history/${id}/${userId}`);
+        var data = await response.json();
+    
+        console.log(data)
+        setChatHistory(data);
+        
       };
 
-      fetchChatHistory();
+      
+    fetchChatHistory();
     }
-  }, [userId]); // Re-run effect when userId becomes available
 
-  if (!userId) {
-    // Render a loading state until the userId is available
-    return <p>Loading...</p>;
-  }
+  }, []);
 
   const handleSendMessage = async () => {
     if (input.trim()) {
@@ -99,18 +76,22 @@ const ChatHistory = () => {
 
   return (
     <div className={styles.chatgptPage}>
+  
       <div className="container mx-auto p-6">
         <h1 className="text-3xl font-bold mb-6">Chat History with User {userId}</h1>
         <div className="chat-history-list">
-          {chatHistory.length ? (
-            chatHistory.map((chat, index) => (
-              <div key={index}>{chat.message}</div>
+          
+          {chatHistory.length > 0 ? (
+            chatHistory.map((chat) => (
+              <div key={chatHistory._id}>{chat.length} Hi</div>
             ))
           ) : (
             <p>No chat history available</p>
           )}
+
         </div>
       </div>
+
 
       <div className={styles.chatWindow}>
         {messages.map((msg, index) => (
