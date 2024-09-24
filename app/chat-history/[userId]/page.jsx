@@ -21,17 +21,16 @@ const ChatHistory = () => {
     // Ensure userId is available before making the request
     if (userId) {
       // Fetch chat history for this user
-      const fetchChatHistory = async () => {
+      const fetchMessages = async () => {
         const response = await fetch(`/api/chat-history/${id}/${userId}`);
         var data = await response.json();
     
-        console.log(data)
-        setChatHistory(data);
+        setMessages(data);
         
       };
 
       
-    fetchChatHistory();
+    fetchMessages();
     }
 
   }, []);
@@ -44,10 +43,10 @@ const ChatHistory = () => {
         text: input,
       };
 
-      // Optimistically update the UI
+       // Optimistically update the UI
       setMessages([...messages, { ...newMessage, sender: 'user' }]);
       setInput('');
-
+ 
       try {
         const res = await fetch(`/api/messages/${userId}/message`, {
           method: 'POST',
@@ -68,9 +67,9 @@ const ChatHistory = () => {
       setTimeout(() => {
         setMessages((prevMessages) => [
           ...prevMessages,
-          { sender: 'ai', text: 'This is a sample AI response.', receiverId: userId },
+          { sender: id, text: 'This is a sample AI response.', receiverId: userId },
         ]);
-      }, 1000);
+      }, 1000); 
     }
   };
 
@@ -81,9 +80,9 @@ const ChatHistory = () => {
         <h1 className="text-3xl font-bold mb-6">Chat History with User {userId}</h1>
         <div className="chat-history-list">
           
-          {chatHistory.length > 0 ? (
-            chatHistory.map((chat) => (
-              <div key={chatHistory._id}>{chat.length} Hi</div>
+          {messages.length > 0 ? (
+            messages.map((message) => (
+              <div key={message._id}>{message.content} Hi</div>
             ))
           ) : (
             <p>No chat history available</p>
