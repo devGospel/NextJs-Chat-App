@@ -46,6 +46,9 @@ const Nav = () => {
             <Link href='/chats' className='black_btn'>
               Chats
             </Link>
+            <Link href='/messages' className='black_btn'>
+              Messages
+            </Link>
 
             <button type='button' onClick={signOut} className='outline_btn'>
               Sign Out
@@ -122,6 +125,9 @@ const Nav = () => {
 
                 <Link href='/chats' className='dropdown_link'>
                   Chats
+                </Link>
+                <Link href='/socket' className='dropdown_link'>
+                  Messages
                 </Link>
 
                 <button
