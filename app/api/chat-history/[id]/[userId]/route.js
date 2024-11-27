@@ -5,9 +5,7 @@ import Message from '../../../../../models/message';
 
 export const GET = async (request, { params }) => {
   const { id, userId } = params;
-
-  console.log("Sender Id: " + id + " Receiver Id: " + userId);
-
+  
   if (!id || !userId) {
     return new Response(JSON.stringify({ success: false, message: "Missing parameters" }), {
       status: 400,

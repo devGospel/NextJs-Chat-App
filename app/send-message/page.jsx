@@ -3,12 +3,12 @@
 import { useState, useEffect } from 'react';
 import { useSession } from 'next-auth/react';
 import { useParams } from 'next/navigation';
-import styles from '../../styles/Chats.module.css'; // Import the CSS module
+import styles from '../../styles/Chats.module.css'; 
 
 
 
 
- const ChatGPTPage = () => {
+ const SendMessage = () => {
   const {data: session} = useSession()
   const params = useParams()
   const [messages, setMessages] = useState([]);
@@ -17,7 +17,6 @@ import styles from '../../styles/Chats.module.css'; // Import the CSS module
   const receiverId = params
 
 
-  // Fetch messages for the particular user
   useEffect(() => {
     const fetchMessages = async () => {
       if (userId) {
@@ -92,4 +91,4 @@ import styles from '../../styles/Chats.module.css'; // Import the CSS module
   );
 }
 
-export default ChatGPTPage
+export default SendMessage

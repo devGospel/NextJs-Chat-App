@@ -3,19 +3,12 @@ import Message from '../../../../../models/message';
 
 export const POST = async (request) => {
   try {
-
-
     const { senderId, receiverId, text } = await request.json();
-
- 
-    
     if (!senderId || !receiverId || !text) {
       return new Response(JSON.stringify({ success: false, error: 'All fields are required' }), { status: 400 });
     }
-
   
     await connectToDB();
-
  
     const newMessage = new Message({
       sender: senderId,
@@ -23,7 +16,6 @@ export const POST = async (request) => {
       content: text,
       timestamp: Date.now(),
     });
-
    
     await newMessage.save();
 

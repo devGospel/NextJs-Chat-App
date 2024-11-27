@@ -8,10 +8,10 @@ const Chats = () => {
   const [users, setUsers] = useState([]);
   const router = useRouter();
 
-  // Fetch the users from your API or backend
+
   useEffect(() => {
     const fetchUsers = async () => {
-      const response = await fetch("/api/chat"); // Adjust your API route
+      const response = await fetch("/api/chat"); 
       const data = await response.json();
       
       setUsers(data);
