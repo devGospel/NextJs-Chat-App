@@ -1,7 +1,7 @@
 import { connectToDB } from '../../../../../utils/db';
 import Message from '../../../../../models/message';
 
-// pages/api/messages/[id]/[userId].js
+
 
 export const GET = async (request, { params }) => {
   const { id, userId } = params;
@@ -15,7 +15,7 @@ export const GET = async (request, { params }) => {
   }
 
   try {
-    // Connect to the database
+   
     await connectToDB();
    
     const messages = await Message.find({
