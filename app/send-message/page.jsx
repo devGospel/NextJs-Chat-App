@@ -39,7 +39,7 @@ import styles from '../../styles/Chats.module.css';
         text: input,
       };
 
-      // Optimistically update the UI
+      
       setMessages([...messages, { ...newMessage, sender: 'user' }]);
       setInput('');
 
@@ -55,7 +55,7 @@ import styles from '../../styles/Chats.module.css';
         console.error('Failed to send message');
       }
 
-      // Simulate AI response (you can replace this with actual AI logic)
+  
       setTimeout(() => {
         setMessages((prevMessages) => [
           ...prevMessages,

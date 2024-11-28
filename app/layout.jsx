@@ -3,7 +3,7 @@ import Nav from '../components/Nav';
 import Provider from '../components/Provider';
 
 export const metadata = {
-    title: "Chat App",
+    title: "Chatter",
     decription: "Let's connect and chat"
 }
 
