@@ -63,7 +63,6 @@ const ChatHistory = () => {
         console.error("Error sending message:", error);
       }
 
-      // Simulate AI response (you can replace this with actual AI logic)
       setTimeout(() => {
         setMessages((prevMessages) => [
           ...prevMessages,
