@@ -10,7 +10,7 @@ const ChatHistory = () => {
   const router = useRouter();
   const params = useParams();
   const {data: session} = useSession()
-  const { userId } = params; // Get userId from the URL
+  const { userId } = params; 
   const [chatHistory, setChatHistory] = useState([]);
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
@@ -18,7 +18,7 @@ const ChatHistory = () => {
 
 
   useEffect(() => {
-    // Ensure userId is available before making the request
+   
     if (userId) {
       // Fetch chat history for this user
       const fetchMessages = async () => {
@@ -43,7 +43,7 @@ const ChatHistory = () => {
         text: input,
       };
 
-       // Optimistically update the UI
+      
       setMessages([...messages, { ...newMessage, sender: 'user' }]);
       setInput('');
  
