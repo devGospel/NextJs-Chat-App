@@ -20,7 +20,7 @@ const ChatHistory = () => {
   useEffect(() => {
    
     if (userId) {
-      // Fetch chat history for this user
+      
       const fetchMessages = async () => {
         const response = await fetch(`/api/chat-history/${id}/${userId}`);
         var data = await response.json();
@@ -28,8 +28,7 @@ const ChatHistory = () => {
         setMessages(data);
         
       };
-
-      
+   
     fetchMessages();
     }
 
